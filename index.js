@@ -23,7 +23,7 @@ module.exports = function(source, sourceMap) {
     }
 
     if (Object.keys(query).length) {
-        var inject = '\n/* injects from baggage-loader */\n';
+        var inject = "'use strict'\n";
 
         Object.keys(query).forEach(function(baggageFile) {
             var baggageVar = query[baggageFile];
@@ -45,7 +45,7 @@ module.exports = function(source, sourceMap) {
                     if (stats.isFile()) {
                         // assign it to variable
                         if (baggageVar.length) {
-                            inject += 'var ' + baggageVar + ' = ';
+                            inject += baggageVar + ' = ';
                         }
 
                         // and require
