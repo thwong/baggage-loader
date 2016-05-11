@@ -17,6 +17,14 @@ module.exports = function(source, sourceMap) {
     var srcDirpath = path.dirname(srcFilepath);
     // /foo/bar -> bar
     var srcDirname = srcDirpath.split(path.sep).pop();
+    
+    if (srcFilename.indexOf('.component') > -1) {
+      srcFilename = srcFilename.replace('.component', '');
+    }
+    
+    if (srcFilename.indexOf('.spec') > -1) {
+      srcFilename = srcFilename.replace('.spec', '');
+    }
 
     if (this.cacheable) {
         this.cacheable();
